@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 public class ToDoApp
 {
-    private static Dictionary<string, List<int>> tags = new Dictionary<string, List<int>>();
-    private static List<string> tasks = new List<string>();
+    private static Dictionary<string, List<int>> _tags = new Dictionary<string, List<int>>();
+    private static List<string> _tasks = new List<string>();
     public static void Main()
     {
         Console.WriteLine("==== To Do ====");
@@ -65,21 +65,21 @@ public class ToDoApp
             return;
         }
         string task = parts[1].Trim();
-        tasks.Add(task);
+        _tasks.Add(task);
         Console.WriteLine($"Added {task}");
     }
     private static void ShowTasks()
     {
-        if (tasks.Count == 0)
+        if (_tasks.Count == 0)
         {
             Console.WriteLine("There is no tasks.");
             return;
         }
         Console.WriteLine("Tasks:");
         
-        for (int i=0; i<tasks.Count; i++)
+        for (int i=0; i<_tasks.Count; i++)
         {
-            Console.WriteLine($"{i}: {tasks[i]}");
+            Console.WriteLine($"{i}: {_tasks[i]}");
         }
     }
     private static void RemoveTask(string[] parts)
@@ -95,18 +95,18 @@ public class ToDoApp
             Console.WriteLine("Index must be a number");
             return;
         }
-        if (index < 0 || index > tasks.Count)
+        if (index < 0 || index > _tasks.Count)
         {
             Console.WriteLine("Error: Index is out of range.");
             return;
         }
-        string removedTasks = tasks[index];
-        tasks.RemoveAt(index);
+        string removedTasks = _tasks[index];
+        _tasks.RemoveAt(index);
         Console.WriteLine($"Removed: {removedTasks}"); 
     }
     private static void ClearTasks()
     {
-        tasks.Clear();
+        _tasks.Clear();
         Console.WriteLine("All tasks and tags are cleared");
     }
 
@@ -125,7 +125,7 @@ public class ToDoApp
                 throw new ArgumentException("Task index must be a number.");
             }
 
-            if(index < 0 || index >= tasks.Count)
+            if(index < 0 || index >= _tasks.Count)
             {
                 throw new ArgumentOutOfRangeException("Task index is out of range.");
             }
@@ -136,17 +136,17 @@ public class ToDoApp
                 throw new ArgumentException("Tag name cannot be empty");
             }
             
-            if(!tags.ContainsKey(tagName))
+            if(!_tags.ContainsKey(tagName))
             {
-                tags[tagName] = new List<int>();
+                _tags[tagName] = new List<int>();
             }
 
-            if(tags[tagName].Contains(index))
+            if(_tags[tagName].Contains(index))
             {
                 throw new InvalidOperationException($"Task {index} already has tag '{tagName}'");
             }
 
-            tags[tagName].Add(index);
+            _tags[tagName].Add(index);
 
             Console.WriteLine($"Tagged task {index} with '{tagName}'.");
         }
@@ -178,15 +178,15 @@ public class ToDoApp
 
             string tagName = parts[1].Trim();
 
-            if(!tags.ContainsKey(tagName))
+            if(!_tags.ContainsKey(tagName))
             {
                 throw new KeyNotFoundException($"Tag '{tagName}' does not exist.");
             }
             Console.WriteLine($"Task Tagged '{tagName}'.");
 
-            foreach (int index in tags[tagName])
+            foreach (int index in _tags[tagName])
             {
-                Console.WriteLine($"{index}: {tasks[index]}");
+                Console.WriteLine($"{index}: {_tasks[index]}");
             }
         }
         
