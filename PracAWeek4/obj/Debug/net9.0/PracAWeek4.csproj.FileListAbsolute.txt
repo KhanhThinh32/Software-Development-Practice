@@ -1,0 +1,14 @@
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.GeneratedMSBuildEditorConfig.editorconfig
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.AssemblyInfoInputs.cache
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.AssemblyInfo.cs
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.csproj.CoreCompileInputs.cache
+c:\code\Software Development Practice\PracAWeek4\bin\Debug\net9.0\PracAWeek4.exe
+c:\code\Software Development Practice\PracAWeek4\bin\Debug\net9.0\PracAWeek4.deps.json
+c:\code\Software Development Practice\PracAWeek4\bin\Debug\net9.0\PracAWeek4.runtimeconfig.json
+c:\code\Software Development Practice\PracAWeek4\bin\Debug\net9.0\PracAWeek4.dll
+c:\code\Software Development Practice\PracAWeek4\bin\Debug\net9.0\PracAWeek4.pdb
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.dll
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\refint\PracAWeek4.dll
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.pdb
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\PracAWeek4.genruntimeconfig.cache
+c:\code\Software Development Practice\PracAWeek4\obj\Debug\net9.0\ref\PracAWeek4.dll

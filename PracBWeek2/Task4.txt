@@ -1,0 +1,3 @@
+What does encapsulation achieve in C#? - encapsulation helps to group data and methods inside of a class, help to easier to control and how that data can be access or changed. Its will protect the internal data
+Why are access modifiers important? - Access modifiers helps to make clear how each parts gonna be access, helps to protect the data and prevent unwanted changed.
+How would you explain method overloading to a Python programmer? - the method overloading allows to have multiple methods with the same name but different parameter types. So that C# can choose the correct method on the argument that passed to it.  

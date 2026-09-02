@@ -1,0 +1,14 @@
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.GeneratedMSBuildEditorConfig.editorconfig
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.AssemblyInfoInputs.cache
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.AssemblyInfo.cs
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.csproj.CoreCompileInputs.cache
+C:\code\Software Development Practice\PracBWeek3\bin\Debug\net9.0\PracBWeek3.exe
+C:\code\Software Development Practice\PracBWeek3\bin\Debug\net9.0\PracBWeek3.deps.json
+C:\code\Software Development Practice\PracBWeek3\bin\Debug\net9.0\PracBWeek3.runtimeconfig.json
+C:\code\Software Development Practice\PracBWeek3\bin\Debug\net9.0\PracBWeek3.dll
+C:\code\Software Development Practice\PracBWeek3\bin\Debug\net9.0\PracBWeek3.pdb
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.dll
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\refint\PracBWeek3.dll
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.pdb
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\PracBWeek3.genruntimeconfig.cache
+C:\code\Software Development Practice\PracBWeek3\obj\Debug\net9.0\ref\PracBWeek3.dll

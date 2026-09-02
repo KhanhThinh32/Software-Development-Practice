@@ -1,0 +1,3 @@
+Polymorphism allows different types of objects to be treated as the same base type while still using their own methods. For example, FullTimeEmployee and Contractor can both be stored in a List<Employee>, but when CalculatePay() is called, each object uses its own version of the method.
+
+This is similar to Python because different objects can use methods with the same name and produce different results. However, C# uses explicit inheritance and method overriding, while Python is more flexible because it uses dynamic typing.

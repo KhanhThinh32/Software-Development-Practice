@@ -1,0 +1,14 @@
+C:\code\Software Development Practice\IntroTopic\bin\Debug\net9.0\IntroTopic.exe
+C:\code\Software Development Practice\IntroTopic\bin\Debug\net9.0\IntroTopic.deps.json
+C:\code\Software Development Practice\IntroTopic\bin\Debug\net9.0\IntroTopic.runtimeconfig.json
+C:\code\Software Development Practice\IntroTopic\bin\Debug\net9.0\IntroTopic.dll
+C:\code\Software Development Practice\IntroTopic\bin\Debug\net9.0\IntroTopic.pdb
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.GeneratedMSBuildEditorConfig.editorconfig
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.AssemblyInfoInputs.cache
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.AssemblyInfo.cs
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.csproj.CoreCompileInputs.cache
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.dll
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\refint\IntroTopic.dll
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.pdb
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\IntroTopic.genruntimeconfig.cache
+C:\code\Software Development Practice\IntroTopic\obj\Debug\net9.0\ref\IntroTopic.dll

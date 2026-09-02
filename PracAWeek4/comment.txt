@@ -1,0 +1,15 @@
+Reflection
+1. Of all the values in the items list, only one of them was wrong. Which value was incorrect? Why were all the other values still correct?\
+- The first value is wrong because of the substring start at the wrong position, it should be 23 but it is show that i value is 3 at that time and then the next value will happens with all the wrong position. 
+
+2. What was going wrong when iterating through the symbols list?
+- the sysmbol is containing \r\n so that * was read as  *\r\n then i am using trim() to make it become a line to fix it
+
+3. How did stepping through the code and using the debugger help you find the issues?
+- The debugger help to inspect the error and find where is the porblems instead of just reading the code and guessing where is wrong  
+
+4. Pick 3 issues that you fixed based on the new code analysis rules - how did they improve your code?
+- I did change the public class into and internal, using a invarianculture with int.Parse(), and fixed the code - style. These changes helps to make the code safer.
+
+5. Pick 3 issues that you decided not to fix based on the new code analysis rules - why didn't they need to be fixed?
+- The issues that I havent fixed is CA1303 because this one is a small console, it doesnt really need to create a resources files or multilanguage to fix.

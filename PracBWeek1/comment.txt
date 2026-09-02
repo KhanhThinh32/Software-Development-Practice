@@ -1,0 +1,1 @@
+I have divived the part into different part so that it can prvent the duplicate of the code, make all the method become more clear, easy to read and easy to fix if any bugs appeared
