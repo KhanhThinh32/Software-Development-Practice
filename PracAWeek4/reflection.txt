@@ -1,0 +1,7 @@
+Add to your reflection notes comparing:
+Syntax differences between Lists and Arrays.
+- Arrays using [] and have a fix size for each arrays however Lists use List<> and can adjust the size
+Performance and flexibility of each type.
+- Arrays are faster but lists are more flexible because the item in there can be adjust like remove or add on
+When you would use each structure.
+- I will use arrays when the size is known and fix, while list uses when the data can be change. 
