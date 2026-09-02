@@ -1,5 +1,5 @@
 Reflection
-1. Of all the values in the items list, only one of them was wrong. Which value was incorrect? Why were all the other values still correct?\
+1. Of all the values in the items list, only one of them was wrong. Which value was incorrect? Why were all the other values still correct?
 - The first value is wrong because of the substring start at the wrong position, it should be 23 but it is show that i value is 3 at that time and then the next value will happens with all the wrong position. 
 
 2. What was going wrong when iterating through the symbols list?
