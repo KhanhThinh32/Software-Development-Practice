@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "PracAWeek5/1.0.0": {
+        "runtime": {
+          "PracAWeek5.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PracAWeek5/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
