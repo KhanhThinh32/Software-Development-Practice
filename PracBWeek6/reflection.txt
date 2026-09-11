@@ -1,0 +1,16 @@
+What type is your List.OrderBy(x => x)? (Before you convert to back to a list)
+- it returns an IOrderEnumerable<string>
+Why does .OrderBy() return the ordered results, instead of sorting them in place like .Sort()?
+-Because OrderBy is a LINQ method and does not midify the original collection. It will create and return a new ordered seqquences. This can have to keep the original data unchnage.
+Explain the purpose of x => x in List.OrderBy(x => x).
+-x => x is a lamda expression. it tells OrderBy() to use each item itself as the value used for sorting.
+What does x mean? Can I use any name? Why doesn't x have a type?
+- x represent each individual item in the collection. The name x is just optional, so the other name can be used. x type doesnot have to be written because C# infers that it is a string in the list.
+Did the syntax need to change between your Stack and Queue select? Why or why not?
+-No, the LINQ systax did not need to change. Both stack and queue can use LINQ method such as select and orderby because they both enumerate
+Compared to the stack sorting algorithm in the previous prac which did you prefer and why?
+- I preferred LINQ because it was shorter and easier to read. I could filter and sort the data using only a few methods instead of writing a longer sorting algorithm.
+Did you find the LINQ syntax unusual? Or was it intuitive?  
+At first I found the LINQ syntax unusual, especially lambda expressions such as x => x. After understanding Where(), Select() and OrderBy(), I found it easier to understand.
+Did the syntax need to change between your Stack and Queue select? Why or why not?
+-No, the syntax did not need to change. LINQ works with both Stack and Queue, so I could use the same Where(), Select() and OrderBy() methods for both.

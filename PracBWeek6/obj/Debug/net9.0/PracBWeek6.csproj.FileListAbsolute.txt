@@ -1,0 +1,15 @@
+C:\code\Software Development Practice\PracBWeek6\bin\Debug\net9.0\PracBWeek6.exe
+C:\code\Software Development Practice\PracBWeek6\bin\Debug\net9.0\PracBWeek6.deps.json
+C:\code\Software Development Practice\PracBWeek6\bin\Debug\net9.0\PracBWeek6.runtimeconfig.json
+C:\code\Software Development Practice\PracBWeek6\bin\Debug\net9.0\PracBWeek6.dll
+C:\code\Software Development Practice\PracBWeek6\bin\Debug\net9.0\PracBWeek6.pdb
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.GeneratedMSBuildEditorConfig.editorconfig
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.AssemblyInfoInputs.cache
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.AssemblyInfo.cs
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.csproj.CoreCompileInputs.cache
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.sourcelink.json
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.dll
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\refint\PracBWeek6.dll
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.pdb
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\PracBWeek6.genruntimeconfig.cache
+C:\code\Software Development Practice\PracBWeek6\obj\Debug\net9.0\ref\PracBWeek6.dll
