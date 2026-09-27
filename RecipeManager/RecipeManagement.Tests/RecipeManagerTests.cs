@@ -103,8 +103,81 @@ public sealed class RecipeManagerTests
         Assert.Equal(2, manager.RecipeCount);
     }
 
-    
 
+    [Fact]
+    public void AddRecipe_TestingBlankTitle()
+    {
+        var manager = CreateManager();
+        var recipe = new Recipe
+        {
+            Id = 30,
+            Title = "   "
+        };
+
+        Assert.False(manager.AddRecipe(recipe));
+    }
+
+    [Fact]
+    public void AddRecipe_TestingNullRecipe()
+    {
+        var manager = CreateManager();
+        Assert.Throws<ArgumentException>(() => manager.AddRecipe(null!));
+    }
+
+    [Fact]
+    public void FindRecipe_TestingNonId()
+    {
+        var manager = CreateManager();
+        Recipe? result = manager.FindRecipe(1000);
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void RemoveRecipe_Testing()
+    {
+        var manager = CreateManager();
+
+        bool result = manager.RemoveRecipe(20);
+
+        Assert.True(result);
+        Assert.Null(manager.FindRecipe(20));
+        Assert.Equal(1, manager.RecipeCount);
+    }
+
+
+    public void RemoveRecipe_TestingNonRecipe()
+    {
+        var manager = CreateManager();
+
+        Assert.False(manager.RemoveRecipe(1000));
+        Assert.Equal(1, manager.RecipeCount);
+    }
+
+
+    public void RemoveRecipe_TestingWhenRecipeInCookingPlan()
+    {
+        var manager = CreateManager();
+
+        Assert.True(manager.AddRecipeToCookingPlan(10));
+
+        bool result = manager.RemoveRecipe(10);
+
+        Assert.False(result);
+        Assert.NotNull(manager.FindRecipe(10));
+    }
+
+
+    public void ShoppingList_TestingCopyIngredients()
+    {
+        var manager = CreateManager();
+
+        int added = manager.AddIngredientsToShoppingList(10);
+
+        Assert.Equal(2,added);
+        Assert.Equal(2, manager.ShoppingItemCount);
+
+        Assert.Equal(new[] {"1 apple", "2 bananas" }, manager.GetShoppingList);
+    }
 
 
     [Fact]
