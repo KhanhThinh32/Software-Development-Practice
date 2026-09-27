@@ -69,7 +69,41 @@ public sealed class RecipeManagerTests
         Assert.Throws<ArgumentException>(() => new RecipeManager(recipes));
     }
 
+    [Fact]
+    public void AddRecipe_Testing()
+    {
+        var manager = CreateManager();
+        var recipe = new Recipe
+        {
+            Id = 30,
+            Title = "Cooking Recipe"
+        };
 
+        bool result = manager.AddRecipe(recipe);
+
+        Assert.True(result);
+        Assert.Equal(3, manager.RecipeCount);
+        Assert.Equal("Cooking Recipe", manager.FindRecipe(30)?.Title);
+    }
+
+
+    [Fact]
+    public void AddRecipe_TestingDuplicateId()
+    {
+        var manager = CreateManager();
+        var recipe = new Recipe
+        {
+            Id = 10,
+            Title = "Duplicate recipe"
+        };
+
+        bool result = manager.AddRecipe(recipe);
+
+        Assert.False(result);
+        Assert.Equal(2, manager.RecipeCount);
+    }
+
+    
 
 
 
