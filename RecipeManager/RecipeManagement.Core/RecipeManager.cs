@@ -10,31 +10,110 @@ namespace RecipeManagement.Core;
 /// </summary>
 public sealed class RecipeManager : IRecipeManager
 {
-    // TODO Part A: add your private collection fields here.
+        private readonly Dictionary<int, Recipe> recipes_list = new();
+        private readonly List<string> shoppingList = new();
+        private readonly LinkedList<int> cookingPlan = new();
+        private readonly Stack<int> recipesRemove = new();
+        private readonly Queue<string> intructionQueue = new();
 
     public RecipeManager(IEnumerable<Recipe> recipes)
     {
-        // TODO Part A: validate recipes and build Dictionary<int, Recipe>.
-        _ = recipes;
+        if(recipes == null)
+        {
+            throw new ArgumentException(nameof(recipes));
+        }
+
+        foreach (Recipe recipe in recipes)
+        {
+            if (recipe == null)
+            {
+                throw new ArgumentException("Must contain at least 1 recipes.",nameof(recipes));
+            }
+
+            if (recipe.Id <= 0)
+            {
+                throw new ArgumentException("ID must be positive value.",nameof(recipes));
+            }
+
+            if (string.IsNullOrWhiteSpace(recipe.Title))
+            {
+                throw new ArgumentException("Recipe title can not be emty.",nameof(recipes));
+            }
+
+            if (recipes_list.ContainsKey(recipe.Id))
+            {
+                throw new ArgumentException("Duplicate ID.",nameof(recipes));
+            }
+        }
     }
 
-    public int RecipeCount => 0;
-    public int ShoppingItemCount => 0;
-    public int CookingPlanCount => 0;
-    public int PendingInstructionCount => 0;
-    public int RemovedRecipeCount => 0;
+    public int RecipeCount => recipes_list.Count;
+    public int ShoppingItemCount => shoppingList.Count;
+    public int CookingPlanCount => cookingPlan.Count;
+    public int PendingInstructionCount => intructionQueue.Count;
+    public int RemovedRecipeCount => recipesRemove.Count;
 
-    public bool AddRecipe(Recipe recipe) =>
-        throw new NotImplementedException("Part A: implement AddRecipe.");
+    public bool AddRecipe(Recipe recipe)
+    {
+        if (recipe == null)
+            {
+                throw new ArgumentException(nameof(recipes));
+            }
 
-    public Recipe? FindRecipe(int recipeId) =>
-        throw new NotImplementedException("Part A: implement FindRecipe.");
+            if (recipe.Id <= 0)
+            {
+                return false;
+            }
 
-    public bool RemoveRecipe(int recipeId) =>
-        throw new NotImplementedException("Part A: implement RemoveRecipe.");
+            if (string.IsNullOrWhiteSpace(recipe.Title))
+            {
+                return false;
+            }
 
-    public int AddIngredientsToShoppingList(int recipeId) =>
-        throw new NotImplementedException("Part A: implement AddIngredientsToShoppingList.");
+            if (recipes_list.ContainsKey(recipe.Id))
+            {
+                return false;
+            }
+
+            recipes_list.Add(recipe.Id, recipe);
+            return true;
+    }
+        
+
+    public Recipe? FindRecipe(int recipeId)
+    {
+        if (recipes_list.ContainsKey(recipeId))
+        {
+            return recipes_list[recipeId];
+        }
+        return null;
+    }
+
+    public bool RemoveRecipe(int recipeId)
+    {
+        if (!recipes_list.ContainsKey(recipeId))
+        {
+            return false;
+        }
+
+        if (cookingPlan.Contains(recipeId))
+        {
+            return false;
+        }
+        return recipes_list.Remove(recipeId);
+    }
+
+    public int AddIngredientsToShoppingList(int recipeId)
+    {
+        Recipe? recipe = FindRecipe(recipeId);
+
+        if(recipe == null)
+        {
+            return 0;
+        }
+
+        foreach(string ingredient in recipe)
+    }
 
     public IReadOnlyList<string> GetShoppingList() =>
         throw new NotImplementedException("Part A: implement GetShoppingList.");
