@@ -17,6 +17,63 @@ public sealed class RecipeManagerTests
     }
 
     [Fact]
+    public void Constructor_NullRecipeTesting()
+    {
+        Assert.Throws<ArgumentException>(() => new RecipeManager(null!));
+    }
+
+    [Fact]
+    public void Constructor_DuplicateIdTesting()
+    {
+        var recipes = new[]
+        {
+            new Recipe
+            {
+                Id = 1,
+                Title = "Recipe A"
+            },
+            new Recipe
+            {
+                Id = 1,
+                Title = "Recipe B"
+            }
+        };
+        Assert.Throws<ArgumentException>(() => new RecipeMager(recipes));
+    }
+
+    [Fact]
+    public void Constructor_NegativeIdTesting()
+    {
+        var recipes = new []
+        {
+            new Recipe
+            {
+                Id = 0,
+                title = "Invalid Recipe"
+            }
+        };
+        Assert.Throws<ArgumentException>(() => new RecipeManager(recipes));
+    }
+
+    [Fact]
+    public void Constructor_NonTitleTesting()
+    {
+        var recipes = new []
+        {
+            new Recipe
+            {
+                Id = 1,
+                title = ""
+            }
+        };
+        Assert.Throws<ArgumentException>(() => new RecipeManager(recipes));
+    }
+
+
+
+
+
+    [Fact]
     public void InstructionsAreCompletedInFileOrder()
     {
         var manager = CreateManager();
