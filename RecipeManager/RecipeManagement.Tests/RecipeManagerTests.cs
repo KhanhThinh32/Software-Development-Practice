@@ -171,13 +171,123 @@ public sealed class RecipeManagerTests
     {
         var manager = CreateManager();
 
-        int added = manager.AddIngredientsToShoppingList(10);
+        int item = manager.AddIngredientsToShoppingList(10);
 
-        Assert.Equal(2,added);
+        Assert.Equal(2, item);
         Assert.Equal(2, manager.ShoppingItemCount);
 
         Assert.Equal(new[] {"1 apple", "2 bananas" }, manager.GetShoppingList);
     }
+
+
+    [Fact]
+    public void ShoppingList_TestingAddingIngredients()
+    {
+        var manager = CreateManager();
+
+        int item = manager.AddIngredientsToShoppingList(1000);
+
+        Assert.Equal(0, item);
+        Assert.Equal(0, manager.ShoppingItemCount);
+    }
+
+
+    [Fact]
+    public void ShoppingList_TestingClear()
+    {
+        var manager = CreateManager();
+
+        manager.AddIngredientsToShoppingList(10);
+
+        Assert.Equal(2, manager.ShoppingItemCount);
+
+        manager.ClearShoppingList();
+
+        Assert.Equal(0, manager.ShoppingItemCount);
+        Assert.Empty(manager.GetShoppingList());
+    }
+
+
+    [Fact]
+    public void CookingPlan_TestingAddRecipe()
+    {
+        var manager = CreateManager();
+
+        Assert.True(manager.AddRecipeToCookingPlan(10));
+        Assert.True(manager.AddRecipeToCookingPlan(20));
+
+        Assert.Equal(2, manager.CookingPlanCount);
+
+        Assert.Equal(
+            new[] { 10, 20 },
+            manager.GetCookingPlan());
+    }
+
+
+    [Fact]
+    public void CookingPlan_TestingDuplicateId()
+    {
+        var manager = CreateManager();
+
+        Assert.True(manager.AddRecipeToCookingPlan(10));
+        Assert.False(manager.AddRecipeToCookingPlan(10));
+
+        Assert.Equal(1, manager.CookingPlanCount);
+
+        Assert.Equal(
+            new[] { 10 },
+            manager.GetCookingPlan());
+    }
+
+
+    [Fact]
+    public void CookingPlan_TestingNoneRecipe()
+    {
+        var manager = CreateManager();
+
+        Assert.False(manager.AddRecipeToCookingPlan(1000));
+
+        Assert.Equal(0, manager.CookingPlanCount);
+    }
+
+
+    [Fact]
+    public void CookingPlan_TestingRemove()
+    {
+        var manager = CreateManager();
+
+        manager.AddRecipeToCookingPlan(10);
+
+        bool result =
+            manager.RemoveRecipeFromCookingPlan(10);
+
+        Assert.True(result);
+
+        Assert.Equal(0, manager.CookingPlanCount);
+        Assert.Equal(1, manager.RemovedRecipeCount);
+        Assert.Equal(10, manager.PeekLastRemovedRecipe());
+    }
+
+
+
+[Fact]
+public void RemovedHistory_Testing()
+{
+    var manager = CreateManager();
+
+    Assert.Null(manager.PeekLastRemovedRecipe());
+    Assert.False(manager.RestoreLastRemovedRecipe());
+}
+
+
+[Fact]
+public void InstructionQueue_Testing()
+{
+    var manager = CreateManager();
+
+    Assert.Null(manager.PeekNextInstruction());
+    Assert.Null(manager.CompleteNextInstruction());
+}
 
 
     [Fact]
