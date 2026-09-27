@@ -112,23 +112,71 @@ public sealed class RecipeManager : IRecipeManager
             return 0;
         }
 
-        foreach(string ingredient in recipe)
+        foreach(string ingredient in recipe.Ingredients)
+        {
+            shoppingList.Add(ingredient);
+        }
+        return recipe.Ingredients.Count;
     }
 
-    public IReadOnlyList<string> GetShoppingList() =>
-        throw new NotImplementedException("Part A: implement GetShoppingList.");
+    public IReadOnlyList<string> GetShoppingList()
+    {
+        return new List<string>(shoppingList);
+    }
 
-    public void ClearShoppingList() =>
-        throw new NotImplementedException("Part A: implement ClearShoppingList.");
+    public void ClearShoppingList()
+    {
+        shoppingList.Clear();
+    }
 
-    public bool AddRecipeToCookingPlan(int recipeId) =>
-        throw new NotImplementedException("Part A: implement AddRecipeToCookingPlan.");
+    public bool AddRecipeToCookingPlan(int recipeId)
+    {
+        if (!recipes_list.ContainsKey(recipeId))
+        {
+            return false;
+        }
 
-    public bool RemoveRecipeFromCookingPlan(int recipeId) =>
-        throw new NotImplementedException("Part A: implement RemoveRecipeFromCookingPlan.");
+        if (cookingPlan.Contains(recipeId))
+        {
+            return false;
+        }
 
-    public bool RestoreLastRemovedRecipe() =>
-        throw new NotImplementedException("Part A: implement RestoreLastRemovedRecipe.");
+        cookingPlan.AddLast(recipeId);
+        return true;
+    }
+
+    public bool RemoveRecipeFromCookingPlan(int recipeId)
+    {
+        bool removed = cookingPlan.Remove(recipeId);
+        if (!removed)
+        {
+            return false;
+        }
+
+        recipesRemove.Push(recipeId);
+        return true;
+    }
+    public bool RestoreLastRemovedRecipe()
+    {
+        if (recipesRemove.Count == 0)
+        {
+            return false;
+        }
+
+        int recipeId = recipesRemove.Pop();
+        if (!recipes_list.ContainsKey(recipeId))
+        {
+            return false;
+        }
+
+        if (cookingPlan.Contains(recipeId))
+        {
+            return false;
+        }
+
+        cookingPlan.AddLast(recipeId);
+        return true;
+    }
 
     public int? PeekLastRemovedRecipe() =>
         throw new NotImplementedException("Part A: implement PeekLastRemovedRecipe.");
