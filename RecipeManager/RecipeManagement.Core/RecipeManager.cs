@@ -57,7 +57,7 @@ public sealed class RecipeManager : IRecipeManager
     {
         if (recipe == null)
             {
-                throw new ArgumentException(nameof(recipes));
+                throw new ArgumentException(nameof(recipe));
             }
 
             if (recipe.Id <= 0)

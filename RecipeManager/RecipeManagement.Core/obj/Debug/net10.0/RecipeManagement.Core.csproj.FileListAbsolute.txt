@@ -1,0 +1,5 @@
+C:\code\Software Development Practice\RecipeManager\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\code\Software Development Practice\RecipeManager\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.AssemblyInfoInputs.cache
+C:\code\Software Development Practice\RecipeManager\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.AssemblyInfo.cs
+C:\code\Software Development Practice\RecipeManager\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.csproj.CoreCompileInputs.cache
+C:\code\Software Development Practice\RecipeManager\RecipeManagement.Core\obj\Debug\net10.0\RecipeManagement.Core.sourcelink.json
