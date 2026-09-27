@@ -20,14 +20,14 @@ public sealed class RecipeManager : IRecipeManager
     {
         if(recipes == null)
         {
-            throw new ArgumentException(nameof(recipes));
+            throw new ArgumentNullException(nameof(recipes));
         }
 
         foreach (Recipe recipe in recipes)
         {
             if (recipe == null)
             {
-                throw new ArgumentException("Must contain at least 1 recipes.",nameof(recipes));
+                throw new ArgumentNullException("Must contain at least 1 recipes.",nameof(recipes));
             }
 
             if (recipe.Id <= 0)
@@ -44,6 +44,7 @@ public sealed class RecipeManager : IRecipeManager
             {
                 throw new ArgumentException("Duplicate ID.",nameof(recipes));
             }
+            recipes_list.Add(recipe.Id, recipe);
         }
     }
 
@@ -57,7 +58,7 @@ public sealed class RecipeManager : IRecipeManager
     {
         if (recipe == null)
             {
-                throw new ArgumentException(nameof(recipe));
+                throw new ArgumentNullException(nameof(recipe));
             }
 
             if (recipe.Id <= 0)

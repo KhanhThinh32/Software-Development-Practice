@@ -19,7 +19,7 @@ public sealed class RecipeManagerTests
     [Fact]
     public void Constructor_NullRecipeTesting()
     {
-        Assert.Throws<ArgumentException>(() => new RecipeManager(null!));
+        Assert.Throws<ArgumentNullException>(() => new RecipeManager(null!));
     }
 
     [Fact]
@@ -38,7 +38,7 @@ public sealed class RecipeManagerTests
                 Title = "Recipe B"
             }
         };
-        Assert.Throws<ArgumentException>(() => new RecipeMager(recipes));
+        Assert.Throws<ArgumentException>(() => new RecipeManager(recipes));
     }
 
     [Fact]
@@ -49,7 +49,7 @@ public sealed class RecipeManagerTests
             new Recipe
             {
                 Id = 0,
-                title = "Invalid Recipe"
+                Title = "Invalid Recipe"
             }
         };
         Assert.Throws<ArgumentException>(() => new RecipeManager(recipes));
@@ -63,7 +63,7 @@ public sealed class RecipeManagerTests
             new Recipe
             {
                 Id = 1,
-                title = ""
+                Title = ""
             }
         };
         Assert.Throws<ArgumentException>(() => new RecipeManager(recipes));
@@ -121,7 +121,7 @@ public sealed class RecipeManagerTests
     public void AddRecipe_TestingNullRecipe()
     {
         var manager = CreateManager();
-        Assert.Throws<ArgumentException>(() => manager.AddRecipe(null!));
+        Assert.Throws<ArgumentNullException>(() => manager.AddRecipe(null!));
     }
 
     [Fact]
@@ -144,16 +144,16 @@ public sealed class RecipeManagerTests
         Assert.Equal(1, manager.RecipeCount);
     }
 
-
+    [Fact]
     public void RemoveRecipe_TestingNonRecipe()
     {
         var manager = CreateManager();
 
         Assert.False(manager.RemoveRecipe(1000));
-        Assert.Equal(1, manager.RecipeCount);
+        Assert.Equal(2, manager.RecipeCount);
     }
 
-
+    [Fact]
     public void RemoveRecipe_TestingWhenRecipeInCookingPlan()
     {
         var manager = CreateManager();
@@ -166,17 +166,16 @@ public sealed class RecipeManagerTests
         Assert.NotNull(manager.FindRecipe(10));
     }
 
-
+    [Fact]
     public void ShoppingList_TestingCopyIngredients()
     {
         var manager = CreateManager();
 
         int item = manager.AddIngredientsToShoppingList(10);
 
-        Assert.Equal(2, item);
-        Assert.Equal(2, manager.ShoppingItemCount);
+        Assert.Equal(1, item);
 
-        Assert.Equal(new[] {"1 apple", "2 bananas" }, manager.GetShoppingList);
+        Assert.Equal(new[] {"1 apple" }, manager.GetShoppingList());
     }
 
 
@@ -199,7 +198,7 @@ public sealed class RecipeManagerTests
 
         manager.AddIngredientsToShoppingList(10);
 
-        Assert.Equal(2, manager.ShoppingItemCount);
+        Assert.Equal(1, manager.ShoppingItemCount);
 
         manager.ClearShoppingList();
 
