@@ -290,9 +290,12 @@ public sealed class RecipeManager : IRecipeManager
         return saveRecipeId.Remove(recipeId);
     }
 
-    public bool IsRecipeSaved(int recipeId) =>
-        throw new NotImplementedException("Part B: implement IsRecipeSaved.");
-
-    public IReadOnlyList<int> GetSavedRecipes() =>
-        throw new NotImplementedException("Part B: implement GetSavedRecipes.");
+    public bool IsRecipeSaved(int recipeId)
+    {
+        return saveRecipeId.Contains(recipeId);
+    }
+    public IReadOnlyList<int> GetSavedRecipes()
+    {
+        return saveRecipeId.ToList();
+    }
 }
