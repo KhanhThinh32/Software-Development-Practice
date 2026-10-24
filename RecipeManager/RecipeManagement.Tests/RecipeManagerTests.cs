@@ -330,4 +330,14 @@ public void InstructionQueue_Testing()
             }
         });
     }
+
+//-------------------------------------------Part B Test----------------------------------------//
+    public void SearchByTitle_ApproriateCase()
+    {
+        var manager = CreateManager();
+        var result = manager.SearchByTitle("DuCk");
+
+        Assert.Equal(2,result.Count);
+        Assert.Equal(new[] {1,2}, result.Select(recipe=>recipe.Id));
+    }
 }
