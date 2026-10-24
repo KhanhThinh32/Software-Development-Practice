@@ -358,6 +358,27 @@ public void InstructionQueue_Testing()
         Assert.Equal(2, result.Count);
         Assert.Equal(new[] { 398, 594 },result.Select(recipe => recipe.Id));
     }
+    public void GetHighestProteinRecipes_TestingNegativeAnd0()
+    {
+        var manager = CreateManager();
 
+        Assert.Empty(manager.GetHighestProteinRecipes(0));
+        Assert.Empty(manager.GetHighestProteinRecipes(-1));
+    }
 
+public void SavedRecipes_TestDuplicateAndRemove()
+    {
+        var manager = CreateManager();
+
+        Assert.True(manager.AddSavedRecipe(1));
+        Assert.False(manager.AddSavedRecipe(1));
+
+        Assert.True(manager.IsRecipeSaved(1));
+        Assert.Equal(new[] { 1 }, manager.GetSavedRecipes());
+
+        Assert.True(manager.RemoveSavedRecipe(1));
+        Assert.False(manager.RemoveSavedRecipe(1));
+        Assert.False(manager.IsRecipeSaved(1));
+        Assert.Empty(manager.GetSavedRecipes());
+    }
 }
