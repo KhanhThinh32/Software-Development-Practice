@@ -340,4 +340,12 @@ public void InstructionQueue_Testing()
         Assert.Equal(2,result.Count);
         Assert.Equal(new[] {1,2}, result.Select(recipe=>recipe.Id));
     }
+
+    public void SearchByTitle_EmptySearch()
+    {
+        var manager = CreateManager();
+        var result = manager.SearchByTitle("    ");
+
+        Assert.Equal(5,result.Count);
+    }
 }
