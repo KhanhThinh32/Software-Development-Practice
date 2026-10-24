@@ -334,33 +334,33 @@ public void InstructionQueue_Testing()
 //-------------------------------------------Part B Test----------------------------------------//
     public void SearchByTitle_ApproriateCase()
     {
-        var manager = CreateManager();
+        var manager = CreateNewManager();
         var result = manager.SearchByTitle("Chicken taco");
 
         Assert.Equal(3,result.Count);
-        Assert.Equal(new[] {1,2}, result.Select(recipe=>recipe.Id));
+        Assert.Equal(new[] { 1, 2, 3 }, result.Select(recipe=>recipe.Id));
     }
 
     public void SearchByTitle_EmptySearch()
     {
-        var manager = CreateManager();
+        var manager = CreateNewManager();
         var result = manager.SearchByTitle("    ");
 
-        Assert.Equal(671,result.Count);
+        Assert.Equal(5,result.Count);
     }
 
     public void GetHighestProteinRecipes()
     {
-        var manager = CreateManager();
+        var manager = CreateNewManager();
 
         var result = manager.GetHighestProteinRecipes(2);
 
         Assert.Equal(2, result.Count);
-        Assert.Equal(new[] { 398, 594 },result.Select(recipe => recipe.Id));
+        Assert.Equal(new[] { 2, 1},result.Select(recipe => recipe.Id));
     }
     public void GetHighestProteinRecipes_TestingNegativeAnd0()
     {
-        var manager = CreateManager();
+        var manager = CreateNewManager();
 
         Assert.Empty(manager.GetHighestProteinRecipes(0));
         Assert.Empty(manager.GetHighestProteinRecipes(-1));
@@ -368,10 +368,11 @@ public void InstructionQueue_Testing()
 
 public void SavedRecipes_TestDuplicateAndRemove()
     {
-        var manager = CreateManager();
+        var manager = CreateNewManager();
 
         Assert.True(manager.AddSavedRecipe(1));
         Assert.False(manager.AddSavedRecipe(1));
+        Assert.False(manager.AddSavedRecipe(999));
 
         Assert.True(manager.IsRecipeSaved(1));
         Assert.Equal(new[] { 1 }, manager.GetSavedRecipes());
@@ -380,5 +381,102 @@ public void SavedRecipes_TestDuplicateAndRemove()
         Assert.False(manager.RemoveSavedRecipe(1));
         Assert.False(manager.IsRecipeSaved(1));
         Assert.Empty(manager.GetSavedRecipes());
+    }
+
+    public void PartB_IntegratedWorkflow()
+    {
+        var manager = CreateNewManager();
+
+        var searchResults = manager.SearchByTitle("chicken taco");
+        Assert.Equal(3, searchResults.Count);
+
+        var proteinResults = manager.GetHighestProteinRecipes(1);
+        Assert.Single(proteinResults);
+        Assert.Equal(2, proteinResults[0].Id);
+
+        Assert.Equal(
+            "chicken curry",
+            manager.FindRecipe(5)?.Title);
+
+        Assert.True(manager.AddRecipeToCookingPlan(2));
+        Assert.Equal(new[] { 2 }, manager.GetCookingPlan());
+
+        Assert.True(manager.AddSavedRecipe(2));
+        Assert.True(manager.IsRecipeSaved(2));
+        Assert.True(manager.RemoveSavedRecipe(2));
+        Assert.False(manager.IsRecipeSaved(2));
+    }
+
+    private static RecipeManager CreateNewManager()
+    {
+        return new RecipeManager(new[]
+        {
+            new Recipe
+            {
+                Id = 1,
+                Title = "Chicken Soup",
+                Ingredients = new()
+                {
+                    "Chicken breast",
+                    "Chicken stock",
+                    "Rice"
+                },
+                Nutrition = new NutritionInfo
+                {
+                    ProteinG = 20
+                }
+            },
+            new Recipe
+            {
+                Id = 2,
+                Title = "chicken curry",
+                Ingredients = new()
+                {
+                    "Chicken",
+                    "Curry powder",
+                    "Coconut milk"
+                },
+                Nutrition = new NutritionInfo
+                {
+                    ProteinG = 35
+                }
+            },
+            new Recipe
+            {
+                Id = 3,
+                Title = "Beef Noodles",
+                Ingredients = new()
+                {
+                    "Beef",
+                    "Noodles"
+                },
+                Nutrition = new NutritionInfo
+                {
+                    ProteinG = 15
+                }
+            },
+            new Recipe
+            {
+                Id = 4,
+                Title = "Apple Salad",
+                Ingredients = new()
+                {
+                    "Apple",
+                    "Lettuce"
+                },
+                Nutrition = null
+            },
+            new Recipe
+            {
+                Id = 5,
+                Title = "Fruit Bowl",
+                Ingredients = new()
+                {
+                    "Apple",
+                    "Banana"
+                },
+                Nutrition = new NutritionInfo()
+            }
+        });
     }
 }
