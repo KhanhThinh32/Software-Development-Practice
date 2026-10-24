@@ -335,9 +335,9 @@ public void InstructionQueue_Testing()
     public void SearchByTitle_ApproriateCase()
     {
         var manager = CreateManager();
-        var result = manager.SearchByTitle("DuCk");
+        var result = manager.SearchByTitle("Chicken taco");
 
-        Assert.Equal(2,result.Count);
+        Assert.Equal(3,result.Count);
         Assert.Equal(new[] {1,2}, result.Select(recipe=>recipe.Id));
     }
 
@@ -346,6 +346,16 @@ public void InstructionQueue_Testing()
         var manager = CreateManager();
         var result = manager.SearchByTitle("    ");
 
-        Assert.Equal(5,result.Count);
+        Assert.Equal(671,result.Count);
+    }
+
+    public void GetHighestProteinRecipes()
+    {
+        var manager = CreateManager();
+
+        var result = manager.GetHighestProteinRecipes(2);
+
+        Assert.Equal(2, result.Count);
+        Assert.Equal(new[] { 2, 1 },result.Select(recipe => recipe.Id));
     }
 }
