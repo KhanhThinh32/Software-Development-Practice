@@ -248,11 +248,32 @@ public sealed class RecipeManager : IRecipeManager
                     .ToList();
         }
 
-    public IReadOnlyList<Recipe> SearchByIngredient(string searchText) =>
-        throw new NotImplementedException("Part B: implement SearchByIngredient.");
+    public IReadOnlyList<Recipe> SearchByIngredient(string searchText)
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            return recipes_list.Values.ToList();
+        }
 
-    public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count) =>
-        throw new NotImplementedException("Part B: implement GetHighestProteinRecipes.");
+        string search = searchText.Trim();
+
+        return recipes_list.Values
+                .Where(recipe => recipe.Ingredients !=null && recipe.Ingredients.Any(ingredient => ingredient.Contains(search,StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+    }
+
+    public IReadOnlyList<Recipe> GetHighestProteinRecipes(int count)
+    {
+        if (count <= 0)
+        {
+            return new List<Recipe>();
+        }
+        return recipes_list.Values
+                .Where(recipe => recipe.Nutrition?.ProteinG !=null)
+                .OrderByDescending(recipe => recipe.Nutrition!.ProteinG!.Value)
+                .Take(count)
+                .ToList();
+    }
 
     public bool AddSavedRecipe(int recipeId) =>
         throw new NotImplementedException("Part B: implement AddSavedRecipe.");
