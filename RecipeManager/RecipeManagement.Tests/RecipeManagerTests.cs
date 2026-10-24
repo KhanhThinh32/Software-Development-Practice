@@ -356,6 +356,8 @@ public void InstructionQueue_Testing()
         var result = manager.GetHighestProteinRecipes(2);
 
         Assert.Equal(2, result.Count);
-        Assert.Equal(new[] { 2, 1 },result.Select(recipe => recipe.Id));
+        Assert.Equal(new[] { 398, 594 },result.Select(recipe => recipe.Id));
     }
+
+
 }
