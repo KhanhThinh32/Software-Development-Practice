@@ -236,8 +236,17 @@ public sealed class RecipeManager : IRecipeManager
         return instructiontionQueue.Dequeue();
     }
 
-    public IReadOnlyList<Recipe> SearchByTitle(string searchText) =>
-        throw new NotImplementedException("Part B: implement SearchByTitle.");
+    public IReadOnlyList<Recipe> SearchByTitle(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                return recipes_list.Values.ToList();
+            }
+            string search = searchText.Trim();
+            return recipes_list.Values.
+                    Where(recipe => recipe.Title.Contains(search,StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+        }
 
     public IReadOnlyList<Recipe> SearchByIngredient(string searchText) =>
         throw new NotImplementedException("Part B: implement SearchByIngredient.");
