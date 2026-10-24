@@ -1,0 +1,27 @@
+What happens if the text file already exists when you write to it?
+- If I use File.CreateText(), the existing file will be overwritten and the old content will be lost. However, if I check File.Exists() first and only create the file when it does not exist, the existing file will remain unchanged.
+What does the @ symbol before the quoted string mean?
+- The @ symbol creates a verbatim string literal in C#. It allows backslashes to be written without escaping them. For example, @"C:\temp\MyTest.txt".
+Do you need to wrap the file access with using StreamReader and using StreamWriter? What would happen if you don't do this?
+- Using statements are recommended because they automatically close and dispose of file streams. Without them, I would need to close the streams manually. Otherwise, the file might remain open and resources might not be released properly.
+How is using the StreamReader different from just File.ReadAllText()?
+- StreamReader can read a file line by line, which is useful for large files. File.ReadAllText() reads the entire file into a single string, which is simpler for small files.
+What does the ! symbol at the end of the Deserialize line above do?
+- The ! symbol is the null-forgiving operator. It tells the compiler to ignore nullable warnings because the programmer expects the result not to be null. However, it does not prevent null values at runtime.
+What happens if all your Classes properties aren't public?
+- By default, System.Text.Json serializes public properties. Non-public properties are usually ignored, so their values may not be saved or restored correctly during serialization and deserialization.
+What does where T : class mean?
+-   where T : class is a generic constraint in C#. It means that T must be a reference type. For example, Player, string and List are reference types. This allows the method to work with different reference types while preventing value types like int from being used.
+What is the purpose of the Gargbage Collector?
+- The Garbage Collector automatically manages memory in C#. It finds objects that are no longer being used and reclaims their memory to help prevent unnecessary memory usage.
+Why does it know the current amount of bytes allocated to the Heap?
+- The Garbage Collector tracks memory allocations in the managed heap. Therefore, it can provide information about the heap size and memory usage.
+What does GC.Collect() do?
+- GC.Collect() forces a garbage collection. It attempts to reclaim memory from objects that are no longer reachable.
+Was the PeakWorkingSet64 different to the HeapSizeBytes? Why?
+- These values are usually different because they measure different aspects of memory usage. HeapSizeBytes represents the managed heap size recorded after the last garbage collection, while PeakWorkingSet64 represents the highest physical memory usage of the entire process.
+Which class used more memory?
+- Generally, LinkedList<Player> uses more memory than List<Player> when storing the same number of players. However, the actual result depends on the memory measurements recorded during the test.
+Why?
+- LinkedList generally uses more memory because each element is stored in a separate node containing references to the previous and next nodes. In contrast, List uses an internal array to store references to its elements, which usually requires less memory overhead.
+

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace RecipeManagement.Core;
 
 /// <summary>
@@ -15,6 +15,7 @@ public sealed class RecipeManager : IRecipeManager
         private readonly LinkedList<int> cookingPlan = new();
         private readonly Stack<int> recipesRemove = new();
         private readonly Queue<string> instructiontionQueue = new();
+        private readonly HashSet<int> saveRecipeId = new();
 
     public RecipeManager(IEnumerable<Recipe> recipes)
     {
